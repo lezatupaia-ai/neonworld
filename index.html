@@ -904,6 +904,39 @@ section{padding:60px 0}
 @keyframes toastIn{from{opacity:0;transform:translateY(24px) scale(.94)}to{opacity:1;transform:none}}
 @keyframes toastOut{to{opacity:0;transform:translateY(14px) scale(.96)}}
 
+/* ==================== ОТДЕЛЬНЫЕ СТРАНИЦЫ ==================== */
+.page-view{
+  position:fixed;inset:0;z-index:100;
+  background:var(--bg);
+  overflow-y:auto;
+  transform:translateY(100%);
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+.page-view.show{transform:translateY(0)}
+.page-view-header{
+  position:sticky;top:0;z-index:10;
+  display:flex;align-items:center;gap:16px;
+  padding:16px 32px;
+  background:rgba(6,6,10,.85);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.page-view-header h2{
+  font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;
+  color:#fff;margin:0;
+}
+.page-view-back{
+  padding:10px 18px;border-radius:12px;
+  background:var(--card);border:1px solid var(--ring);
+  font-weight:700;font-size:14px;color:#c6c6da;
+  transition:.2s;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+}
+.page-view-back:hover{
+  color:#fff;border-color:rgba(59,157,255,.5);
+  background:rgba(59,157,255,.08);
+}
+.page-view-body{max-width:1000px;margin:0 auto;padding:32px}
+
 @media (max-width:960px){
   .shop-layout{grid-template-columns:1fr}
   .sidebar{position:static;flex-direction:row;flex-wrap:wrap;gap:14px}
@@ -966,6 +999,9 @@ section{padding:60px 0}
   .rules-section ul[style*="columns:2"]{columns:1 !important}
   .social-link{width:42px;height:42px}
   .social-link svg{width:18px;height:18px}
+  .page-view-header{padding:14px 16px}
+  .page-view-header h2{font-size:16px}
+  .page-view-body{padding:20px 16px}
 }
 @media (max-width:400px){
   .products{grid-template-columns:1fr}
@@ -1007,8 +1043,8 @@ section{padding:60px 0}
       <a href="#top">Главная</a>
       <a href="#shop">Магазин</a>
       <a href="#servers">Серверы</a>
-     <a href="#rules" data-page="pageRules">Правила</a>
-     <a href="#check" data-page="pageCheck">Проверка</a>
+      <a href="#rules" data-page="pageRules">Правила</a>
+      <a href="#check" data-page="pageCheck">Проверка</a>
     </nav>
     <div class="header-right">
       <div class="online" id="onlineBox">
@@ -1142,24 +1178,25 @@ section{padding:60px 0}
   </div>
 </section>
 
-<section id="rules">
-  <div class="wrap">
-    <div class="section-head" style="margin-bottom:28px">
-      <h2 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(24px,3vw,38px);line-height:1.1">Правила проекта</h2>
-      <p style="margin-top:8px;color:var(--muted);font-size:16px">Общее положение и правила гриферского режима</p>
-    </div>
-   <div class="rules-section">
-     <h3>1. Общее положение</h3>
-     <ul>
-       <li>1.1. Данный свод правил составлен представителем проекта NeonWorld и действителен ТОЛЬКО в рамках гриферского режима.</li>
-       <li>1.2. Проект NeonWorld — комплекс серверов, расположенных по адресу mc.NeonWorld.pw.</li>
-       <li>1.3. Регистрируясь на нашем проекте, вы автоматически принимаете данные правила.</li>
-       <li>1.4. Незнание правил не освобождает нарушителя от ответственности.</li>
-       <li>1.5. Правила могут быть изменены без явного оповещения.</li>
-       <li>1.6. Главная администрация вправе выдавать наказания вне рамок данных правил.</li>
-       <li>1.7. Решения и действия главной администрации не обсуждаются.</li>
-       <li>1.8. Администрация сервера не выдаёт игровые ресурсы за их потерю.</li>
-       <li>1.9. За любой вид чата будут наказываться сообщения: пиар, признание в читах, оскорбления и т.д.</li>
+<!-- ================= ПРАВИЛА (отдельная страница) ================= -->
+<div class="page-view" id="pageRules">
+  <div class="page-view-header">
+    <button class="page-view-back" onclick="closePage()">← Назад</button>
+    <h2>Правила проекта</h2>
+  </div>
+  <div class="page-view-body">
+    <div class="rules-section">
+      <h3>1. Общее положение</h3>
+      <ul>
+        <li>1.1. Данный свод правил составлен представителем проекта NeonWorld и действителен ТОЛЬКО в рамках гриферского режима.</li>
+        <li>1.2. Проект NeonWorld — комплекс серверов, расположенных по адресу mc.NeonWorld.pw.</li>
+        <li>1.3. Регистрируясь на нашем проекте, вы автоматически принимаете данные правила.</li>
+        <li>1.4. Незнание правил не освобождает нарушителя от ответственности.</li>
+        <li>1.5. Правила могут быть изменены без явного оповещения.</li>
+        <li>1.6. Главная администрация вправе выдавать наказания вне рамок данных правил.</li>
+        <li>1.7. Решения и действия главной администрации не обсуждаются.</li>
+        <li>1.8. Администрация сервера не выдаёт игровые ресурсы за их потерю.</li>
+        <li>1.9. За любой вид чата будут наказываться сообщения: пиар, признание в читах, оскорбления и т.д.</li>
       </ul>
       <h3>2. Правила регистрации</h3>
       <ul>
@@ -1281,20 +1318,18 @@ section{padding:60px 0}
        <li>PlayerHighlighter
        <li>ClickCrystal 1.19.4 / 1.16.5
        <li>AutoClicky
-      <ul>
-     </ul>
+      </ul>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ================= ПРОВЕРКА ================= -->
-<section id="check">
-  <div class="wrap">
-    <div class="section-head" style="margin-bottom:28px">
-      <h2 style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(24px,3vw,38px);line-height:1.1">Проверка на читы</h2>
-      <p style="margin-top:8px;color:var(--muted);font-size:16px">Инструкция по AnyDesk и список программ для проверки</p>
-    </div>
-
+<!-- ================= ПРОВЕРКА (отдельная страница) ================= -->
+<div class="page-view" id="pageCheck">
+  <div class="page-view-header">
+    <button class="page-view-back" onclick="closePage()">← Назад</button>
+    <h2>Проверка на читы</h2>
+  </div>
+  <div class="page-view-body">
     <div class="rules-section">
       <h3>AnyDesk — установка и подключение</h3>
 
@@ -1329,7 +1364,7 @@ section{padding:60px 0}
       </ul>
     </div>
   </div>
-</section>
+</div>
 
 <footer class="footer">
   <div class="wrap">
@@ -1652,6 +1687,27 @@ function checkMaintenance(){
   btn.classList.toggle('on', maintenance);
 }
 checkMaintenance();
+
+/* ==================== ОТДЕЛЬНЫЕ СТРАНИЦЫ ==================== */
+function openPage(id){
+  document.querySelectorAll('.page-view.show').forEach(el => el.classList.remove('show'));
+  const target = document.getElementById(id);
+  if (target){
+    target.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    target.scrollTop = 0;
+  }
+}
+function closePage(){
+  document.querySelectorAll('.page-view.show').forEach(el => el.classList.remove('show'));
+  document.body.style.overflow = (maintenance && !isAdmin) ? 'hidden' : '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape'){
+    const open = document.querySelector('.page-view.show');
+    if (open) closePage();
+  }
+});
 
 const statusCache = {};
 async function fetchStatus(ip) {
@@ -2119,6 +2175,12 @@ promoList.addEventListener('click', e => {
 });
 
 document.addEventListener('click', e => {
+  const pageBtn = e.target.closest('[data-page]');
+  if (pageBtn){
+    e.preventDefault();
+    openPage(pageBtn.dataset.page);
+    return;
+  }
   const catBtn = e.target.closest('[data-cat]');
   if (catBtn){ state.cat = catBtn.dataset.cat; renderCats(); renderProducts(); return; }
   const srvBtn = e.target.closest('[data-srv]');
