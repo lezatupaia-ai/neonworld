@@ -120,6 +120,39 @@ body::after{
 .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--ring);
   background:var(--card);font-size:20px;place-items:center}
 
+/* ==================== МОБИЛЬНОЕ МЕНЮ ==================== */
+.mobile-menu{
+  position:fixed;inset:0;z-index:65;
+  background:rgba(6,6,10,.96);
+  backdrop-filter:blur(20px);
+  display:flex;flex-direction:column;
+  padding:80px 24px 40px;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s;
+}
+.mobile-menu.show{opacity:1;pointer-events:auto}
+.mobile-menu a{
+  padding:18px 20px;border-radius:14px;
+  font-size:17px;font-weight:700;color:#eaeaf5;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;gap:12px;
+  transition:.2s;
+}
+.mobile-menu a:hover,
+.mobile-menu a:active{background:rgba(255,255,255,.06)}
+.mobile-menu-close{
+  position:absolute;top:20px;right:20px;
+  width:44px;height:44px;border-radius:12px;
+  background:var(--card);border:1px solid var(--ring);
+  display:grid;place-items:center;font-size:20px;color:#fff;
+  cursor:pointer;transition:.2s;
+}
+.mobile-menu-close:hover{background:rgba(255,255,255,.1)}
+.mobile-menu .mm-title{
+  font-family:'Unbounded',sans-serif;font-weight:700;font-size:14px;
+  color:var(--muted);letter-spacing:.08em;margin-bottom:8px;padding-left:8px;
+}
+
 .float-cart{
   position:fixed;right:24px;bottom:24px;z-index:70;
   width:68px;height:68px;border-radius:50%;display:grid;place-items:center;
@@ -1064,6 +1097,16 @@ section{padding:60px 0}
   </div>
 </header>
 
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть">✕</button>
+  <p class="mm-title">НАВИГАЦИЯ</p>
+  <a href="#top">🏠 Главная</a>
+  <a href="#shop">🛒 Магазин</a>
+  <a href="#servers">🖥 Серверы</a>
+  <a href="#rules" data-page="pageRules">📜 Правила</a>
+  <a href="#check" data-page="pageCheck">🔍 Проверка</a>
+</div>
+
 <button class="float-cart" id="cartOpen" aria-label="Открыть корзину">
   <svg viewBox="0 0 24 24">
     <circle cx="9" cy="21" r="1"></circle>
@@ -1706,6 +1749,36 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape'){
     const open = document.querySelector('.page-view.show');
     if (open) closePage();
+  }
+});
+
+/* ==================== МОБИЛЬНОЕ МЕНЮ ==================== */
+const mobileMenu = document.getElementById('mobileMenu');
+const burgerBtn = document.querySelector('.burger');
+
+function openMobileMenu(){
+  mobileMenu.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu(){
+  mobileMenu.classList.remove('show');
+  document.body.style.overflow = (maintenance && !isAdmin) ? 'hidden' : '';
+}
+
+if (burgerBtn){
+  burgerBtn.addEventListener('click', openMobileMenu);
+}
+document.getElementById('mobileMenuClose').addEventListener('click', closeMobileMenu);
+
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    closeMobileMenu();
+  });
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('show')){
+    closeMobileMenu();
   }
 });
 
