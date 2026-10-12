@@ -92,15 +92,6 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .admin-btn.on{color:var(--green);border-color:rgba(60,253,42,.4)}
 .admin-btn.on svg{filter:drop-shadow(0 0 6px rgba(60,253,42,.8))}
 
-.sound-btn{position:relative;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
-  background:var(--card);border:1px solid var(--ring);color:#c6c6da;transition:.2s}
-.sound-btn:hover{color:#fff;border-color:rgba(59,157,255,.5);box-shadow:0 0 20px -8px rgba(59,157,255,.9)}
-.sound-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.sound-btn.muted{color:#5a5a70}
-.sound-btn.muted::after{content:"";position:absolute;width:26px;height:2px;
-  background:#ff3b5c;transform:rotate(-45deg);border-radius:2px;
-  box-shadow:0 0 6px rgba(255,59,92,.8)}
-
 .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--ring);
   background:var(--card);font-size:20px;place-items:center}
 
@@ -256,9 +247,19 @@ section{padding:60px 0}
   display:flex;flex-direction:column}
 .pcard:hover{transform:translateY(-4px);border-color:rgba(59,157,255,.35);
   box-shadow:0 22px 44px -30px rgba(59,157,255,.9)}
+
 .pcard-media{position:relative;aspect-ratio:4/3;overflow:hidden;display:grid;place-items:center;
   background:radial-gradient(120% 120% at 50% 40%, hsl(var(--h) 85% 55% / .35), transparent 65%),
-    linear-gradient(160deg,#14141f,#09090f)}
+    linear-gradient(160deg,#14141f,#09090f);
+  border-bottom:2px solid rgba(59,157,255,.55);
+  box-shadow:inset 0 0 30px -8px rgba(59,157,255,.45),
+             inset 0 -20px 40px -20px rgba(59,157,255,.5);
+  transition:border-color .3s, box-shadow .3s}
+.pcard:hover .pcard-media{
+  border-bottom-color:rgba(59,157,255,.95);
+  box-shadow:inset 0 0 40px -6px rgba(59,157,255,.7),
+             inset 0 -20px 40px -15px rgba(59,157,255,.85)}
+
 .pcard-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   object-position:center top;transition:transform .4s}
 .pcard:hover .pcard-media img{transform:scale(1.05)}
@@ -573,7 +574,7 @@ section{padding:60px 0}
   .brand-sub{display:none}
   .online{padding:7px 12px;font-size:13px}
   .online .muted{font-size:12px}
-  .admin-btn,.sound-btn{width:38px;height:38px}
+  .admin-btn{width:38px;height:38px}
   .hero-bottom-left{bottom:14px;left:14px}
   .hero-bottom-right{right:8px;bottom:8px}
   .ip-copy{padding:10px 16px;font-size:11px;gap:6px;border-radius:10px}
@@ -655,13 +656,6 @@ section{padding:60px 0}
         <b id="onlineNow">…</b>
         <span class="muted" id="onlineMax">/ —</span>
       </div>
-      <button class="sound-btn" id="soundBtn" title="Звук: ВКЛ">
-        <svg viewBox="0 0 24 24">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-        </svg>
-      </button>
       <button class="admin-btn" id="adminBtn" title="Панель администратора">
         <svg viewBox="0 0 24 24">
           <path d="M12 2l9 4v6c0 5-3.5 9.5-9 10-5.5-.5-9-5-9-10V6l9-4z"/>
@@ -835,61 +829,61 @@ section{padding:60px 0}
       <h3>4. Внутриигровое общение</h3>
       <ul>
         <li>4.1. На серверах присутствует локальный и глобальный чат.</li>
-        <li>4.2. Запрещено флудить, отправлять больше 2-ух похожих сообщений подряд [мут 4ч]</li>
-        <li>4.3. Запрещено флудить символами типа "!!!!!!!!" [мут 4ч]</li>
-        <li>4.3.1. Злоупотребление капсом [мут 4ч]</li>
-        <li>4.4. Запрещено организовывать флуд опросами [мут 4ч]</li>
-        <li>4.6. Оскорбления, угрозы к участникам [мут 4ч]</li>
+        <li>4.2. Запрещено флудить [мут 4ч]</li>
+        <li>4.3. Флуд символами [мут 4ч]</li>
+        <li>4.3.1. Капс [мут 4ч]</li>
+        <li>4.4. Флуд опросами [мут 4ч]</li>
+        <li>4.6. Оскорбления [мут 4ч]</li>
         <li>4.7. Аморальное поведение [мут 2-3ч]</li>
         <li>4.8. Внеигровой обман [мут 6ч]</li>
         <li>4.9. Публичная критика проекта [мут 1-5д]</li>
         <li>4.10. Упоминание сторонних проектов [мут 2ч]</li>
-        <li>4.11. Неадекватное поведение [мут 3-12ч]</li>
+        <li>4.11. Неадекват [мут 3-12ч]</li>
         <li>4.12. Призывы к суициду [мут 6ч]</li>
-        <li>4.13. Выпрашивание снятия наказаний [мут 2ч]</li>
-        <li>4.14. Дезинформация игроков [мут 12ч-4д]</li>
-        <li>4.15. Реклама сторонних медиа [мут 1д]</li>
-        <li>4.15.1. Реклама соцсетей [бан 1д]</li>
-        <li>4.15.2. Discord-контакты [бан 2д]</li>
+        <li>4.13. Выпрашивание [мут 2ч]</li>
+        <li>4.14. Дезинформация [мут 12ч-4д]</li>
+        <li>4.15. Реклама [мут 1д]</li>
+        <li>4.15.1. Соцсети [бан 1д]</li>
+        <li>4.15.2. Discord [бан 2д]</li>
         <li>4.16. Оскорбление проекта [мут 120д]</li>
-        <li>4.17. Выпрашивание ресурсов у Админов [мут 1ч]</li>
-        <li>4.18. Реклама сторонних (обход) [мут 60д]</li>
+        <li>4.17. Выпрашивание ресурсов [мут 1ч]</li>
+        <li>4.18. Реклама (обход) [мут 60д]</li>
         <li>4.19. Оскорбление родителей [мут 5-15д]</li>
-        <li>4.20. Затрагивание политики [бан 3-7д]</li>
-        <li>4.21. Выдача себя за админа [бан 3д]</li>
-        <li>4.21.1. Угрозы баном [бан 12ч]</li>
+        <li>4.20. Политика [бан 3-7д]</li>
+        <li>4.21. Выдача за админа [бан 3д]</li>
+        <li>4.21.1. Угрозы [бан 12ч]</li>
         <li>4.22. Реклама в ЛС [бан 60д]</li>
-        <li>4.23. Оскорбление модерации [бан 5-15д]</li>
+        <li>4.23. Оскорбление админов [бан 5-15д]</li>
         <li>4.24. Оскорбление ютуберов [бан 1-5д]</li>
-        <li>4.25. Пропаганда нацизма/наркотиков [бан 3д]</li>
-        <li>4.26. Пропаганда терроризма [бан 7д]</li>
-        <li>4.27. Продажа за реальные деньги [бан 4д]</li>
+        <li>4.25. Пропаганда [бан 3д]</li>
+        <li>4.26. Терроризм [бан 7д]</li>
+        <li>4.27. Продажа за реал [бан 4д]</li>
         <li>4.29. Вредоносные ссылки [бан 14д]</li>
         <li>4.29.1. Доксинг [бан 30д]</li>
-        <li>4.30. Шутки в сторону админов [бан 2д]</li>
-        <li>4.32. Провокация на нарушения [бан 12ч-4д]</li>
-        <li>4.33. Неуважение к админам [мут 12ч]</li>
-        <li>4.35. Упоминание денежных операций [мут 2д]</li>
-        <li>4.36. Помеха персоналу [бан 6ч]</li>
+        <li>4.30. Шутки над админами [бан 2д]</li>
+        <li>4.32. Провокация [бан 12ч-4д]</li>
+        <li>4.33. Неуважение [мут 12ч]</li>
+        <li>4.35. Денежные операции [мут 2д]</li>
+        <li>4.36. Помеха [бан 6ч]</li>
       </ul>
       <h3>5. Игровой процесс</h3>
       <ul>
-        <li>5.1. Лаг-машины, заливы, багоюз [снос и бан 25д; лаг-машины пермбан]</li>
-        <li>5.2. Читы и вредоносное ПО [бан 14-30д]</li>
-        <li>5.3. Кликеры (кроме фармилок) [бан 3д]</li>
+        <li>5.1. Лаг-машины [снос и бан 25д; пермбан]</li>
+        <li>5.2. Читы [бан 14-30д]</li>
+        <li>5.3. Кликеры [бан 3д]</li>
         <li>5.5. Флуд командами [кик, бан 12ч]</li>
-        <li>5.8. Реклама/продажа читов [пермбан]</li>
+        <li>5.8. Реклама читов [пермбан]</li>
         <li>5.9. Кланы с нарушениями [удаление + бан]</li>
-        <li>6.0. Дюп ресурсов [бан по айпи навсегда]</li>
+        <li>6.0. Дюп [бан по айпи навсегда]</li>
       </ul>
       <h3>6. Правила для донатеров</h3>
       <ul>
-        <li>6.1. Использование прав во вред [снятие + бан]</li>
-        <li>6.2. Угроза баном без причины [бан 12ч]</li>
-        <li>6.3. Некорректная выдача наказаний [бан 14д]</li>
-        <li>6.6. Проверка мут/кик/бан только на своём аккаунте</li>
+        <li>6.1. Права во вред [снятие + бан]</li>
+        <li>6.2. Угроза баном [бан 12ч]</li>
+        <li>6.3. Некорректная выдача [бан 14д]</li>
+        <li>6.6. Проверка на своём аккаунте</li>
         <li>6.8. Варп в ловушке [бан 4-7д]</li>
-        <li>6.9. Донатные админы не убивают в GOD/креативе</li>
+        <li>6.9. Не убивать в GOD/креативе</li>
         <li>7.0. Ресурсы из креатива [бан 10д]</li>
       </ul>
       <h3>7. Список запрещенных модов</h3>
@@ -1169,70 +1163,6 @@ async function addPurchase(nick, productName, emoji) {
 }
 /* ============================================================ */
 
-/* ==================== ЗВУКИ ==================== */
-let soundEnabled = localStorage.getItem('nw_sound') !== '0';
-let audioCtx = null;
-
-function initAudio(){
-    if (audioCtx) return;
-    try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){}
-}
-
-function playTone(freq, duration, type = 'sine', volume = 0.12, delay = 0){
-    if (!soundEnabled) return;
-    if (!audioCtx) initAudio();
-    if (!audioCtx) return;
-    try {
-        const t = audioCtx.currentTime + delay;
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = type;
-        osc.frequency.setValueAtTime(freq, t);
-        gain.gain.setValueAtTime(0, t);
-        gain.gain.linearRampToValueAtTime(volume, t + 0.01);
-        gain.gain.exponentialRampToValueAtTime(0.001, t + duration);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(t);
-        osc.stop(t + duration + 0.02);
-    } catch(e){}
-}
-
-function soundClick(){ playTone(880, 0.06, 'triangle', 0.06); }
-function soundAdd(){
-    playTone(660, 0.09, 'sine', 0.09);
-    playTone(990, 0.12, 'sine', 0.09, 0.07);
-}
-function soundRemove(){
-    playTone(440, 0.09, 'sine', 0.08);
-    playTone(330, 0.14, 'sine', 0.08, 0.06);
-}
-function soundSuccess(){
-    playTone(523, 0.12, 'sine', 0.09);
-    playTone(659, 0.12, 'sine', 0.09, 0.09);
-    playTone(784, 0.22, 'sine', 0.09, 0.18);
-}
-
-document.addEventListener('click', initAudio, { once: true });
-document.addEventListener('touchstart', initAudio, { once: true, passive: true });
-
-const soundBtn = document.getElementById('soundBtn');
-function updateSoundBtn(){
-    if (!soundBtn) return;
-    soundBtn.classList.toggle('muted', !soundEnabled);
-    soundBtn.title = soundEnabled ? 'Звук: ВКЛ' : 'Звук: ВЫКЛ';
-}
-if (soundBtn){
-    soundBtn.addEventListener('click', ()=>{
-        soundEnabled = !soundEnabled;
-        localStorage.setItem('nw_sound', soundEnabled ? '1' : '0');
-        updateSoundBtn();
-        if (soundEnabled) soundClick();
-    });
-    updateSoundBtn();
-}
-/* ============================================== */
-
 const CATEGORIES = [
   { id:'privilege', name:'Привилегии', icon:'▦' },
   { id:'case',      name:'Кейсы',      icon:'▦' },
@@ -1506,11 +1436,9 @@ function addToCart(id){
   if (state.cart.some(i => i.id === id)){
     state.cart = state.cart.filter(i => i.id !== id);
     toast('Удалено из корзины', '🗑');
-    soundRemove();
   } else {
     state.cart.push({ ...p });
     toast(`«${p.name}» добавлено`, '✅');
-    soundAdd();
   }
   syncCart();
   bumpCart();
@@ -1605,7 +1533,6 @@ syncFromRange();
 
 document.getElementById('currencyBuy').addEventListener('click', () => {
   toast(`Покупка ${fmt(cdGet.value)} рилликов за ${cdGive.value}₽`, '💎');
-  soundSuccess();
 });
 document.getElementById('currencyClose').addEventListener('click', () => {
   document.getElementById('currencyBlock').style.display = 'none';
@@ -1676,8 +1603,6 @@ coSubmit.addEventListener('click', () => {
   if (!nick){ toast('Введи никнейм', '⚠️'); coNickname.focus(); return; }
   if (!mail || !mail.includes('@')){ toast('Введи корректную почту', '⚠️'); coEmail.focus(); return; }
 
-  soundSuccess();
-
   const item = state.cart[0];
   if (item) addPurchase(nick, item.name, item.emoji || '🎮');
 
@@ -1735,12 +1660,10 @@ function tryLogin(){
     updateMaintUI();
     checkMaintenance();
     toast('Добро пожаловать, администратор!', '🛡');
-    soundSuccess();
   } else {
     adminErr.textContent = 'Неверный пароль';
     adminPass.value = '';
     adminPass.focus();
-    soundRemove();
   }
 }
 adminLogout.addEventListener('click', () => {
@@ -1817,13 +1740,13 @@ document.addEventListener('click', e => {
   const pageBtn = e.target.closest('[data-page]');
   if (pageBtn){ e.preventDefault(); openPage(pageBtn.dataset.page); return; }
   const catBtn = e.target.closest('[data-cat]');
-  if (catBtn){ state.cat = catBtn.dataset.cat; soundClick(); renderCats(); renderProducts(); return; }
+  if (catBtn){ state.cat = catBtn.dataset.cat; renderCats(); renderProducts(); return; }
   const srvBtn = e.target.closest('[data-srv]');
-  if (srvBtn){ state.server = srvBtn.dataset.srv; soundClick(); renderServerFilter(); renderProducts(); return; }
+  if (srvBtn){ state.server = srvBtn.dataset.srv; renderServerFilter(); renderProducts(); return; }
   const addBtn = e.target.closest('[data-add]');
   if (addBtn){ addToCart(Number(addBtn.dataset.add)); return; }
   const delBtn = e.target.closest('[data-del]');
-  if (delBtn){ removeFromCart(Number(delBtn.dataset.del)); soundRemove(); return; }
+  if (delBtn){ removeFromCart(Number(delBtn.dataset.del)); return; }
   const ipBtn = e.target.closest('[data-ip]');
   if (ipBtn){ copyText(ipBtn.dataset.ip); return; }
 });
