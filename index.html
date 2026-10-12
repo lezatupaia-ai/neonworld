@@ -699,9 +699,6 @@ section{padding:60px 0}
              else { this.style.display='none'; }
            ">
       <div class="hero-overlay"></div>
-      <div class="hero-bottom-left">
-        <a href="#shop" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;border-radius:16px;font-weight:800;font-size:14px;color:#fff;background:linear-gradient(135deg,var(--accent-2),#2b8bff);box-shadow:0 14px 40px -14px rgba(59,157,255,.9)">Перейти в магазин →</a>
-      </div>
       <div class="hero-bottom-right">
         <button class="ip-copy" data-ip="mc.neonworld.pw">
           mc.neonworld.pw
@@ -1111,9 +1108,6 @@ section{padding:60px 0}
 <script>
 const ADMIN_PASSWORD = 'neon2026';
 
-/* ============================================================
-   ЛАЙВ-ПОКУПКИ — JSONBLOB
-   ============================================================ */
 const JSONBLOB_URL = 'https://jsonblob.com/api/jsonBlob/01a12e9b-a8b5-72d1-b0a7-826390ef1144';
 
 let RECENT = [
@@ -1161,7 +1155,6 @@ async function addPurchase(nick, productName, emoji) {
     console.warn('Не удалось сохранить покупку:', e);
   }
 }
-/* ============================================================ */
 
 const CATEGORIES = [
   { id:'privilege', name:'Привилегии', icon:'▦' },
