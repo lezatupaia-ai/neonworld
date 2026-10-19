@@ -535,6 +535,10 @@ section{padding:60px 0}
 .page-view-back:hover{color:#fff;border-color:rgba(59,157,255,.5);background:rgba(59,157,255,.08)}
 .page-view-body{max-width:1000px;margin:0 auto;padding:32px}
 
+.support-card{display:flex;align-items:center;gap:14px;padding:18px;border-radius:16px;
+  background:rgba(59,157,255,.08);border:1px solid rgba(59,157,255,.3);transition:.2s;text-decoration:none}
+.support-card:hover{background:rgba(59,157,255,.15);transform:translateY(-2px)}
+
 @media (max-width:960px){
   .shop-layout{grid-template-columns:1fr}
   .sidebar{position:static;flex-direction:row;flex-wrap:wrap;gap:14px}
@@ -642,6 +646,7 @@ section{padding:60px 0}
       <a href="#servers">Серверы</a>
       <a href="#rules" data-page="pageRules">Правила</a>
       <a href="#check" data-page="pageCheck">Проверка</a>
+      <a href="#support" data-page="pageSupport">Поддержка</a>
     </nav>
     <div class="header-right">
       <div class="online" id="onlineBox">
@@ -669,6 +674,7 @@ section{padding:60px 0}
   <a href="#servers">🖥 Серверы</a>
   <a href="#rules" data-page="pageRules">📜 Правила</a>
   <a href="#check" data-page="pageCheck">🔍 Проверка</a>
+  <a href="#support" data-page="pageSupport">💬 Поддержка</a>
 </div>
 
 <button class="float-cart" id="cartOpen" aria-label="Открыть корзину">
@@ -944,8 +950,84 @@ section{padding:60px 0}
         <li><a href="https://www.nirsoft.net/utils/recent_files_view.html" target="_blank" rel="noopener">RecentFilesView</a></li>
         <li><a href="https://github.com/ANSSI-FR/JournalTrace" target="_blank" rel="noopener">JournalTrace</a></li>
         <li><a href="https://pastebin.com/raw/wdaM6sDy" target="_blank" rel="noopener">Strings</a></li>
-        <li><a href="https://www.dropbox.com/scl/fi/4qpe7shww7vxiqs7ryo73/NW-Scanner.exe?rlkey=3ntnhiqvrsu64p0ymp1x0cyfs&st=z9afyj2n&dl=0" target="_blank" rel="noopener">Scanner</a></li>
+        <li><a href="https://www.dropbox.com/scl/fi/4qpe7shww7vxiqs7ryo73/NW-Scanner.exe?rlkey=3ntnhiqvrsu64p0ymp1x0cyfs&st=z9afyj2n&dl=1" target="_blank" rel="noopener">Scanner</a></li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ПОДДЕРЖКА ================= -->
+<div class="page-view" id="pageSupport">
+  <div class="page-view-header">
+    <button class="page-view-back" onclick="closePage()">← Назад</button>
+    <h2>Поддержка проекта</h2>
+  </div>
+  <div class="page-view-body">
+    <div class="rules-section">
+      <h3>📞 Контакты для обращений</h3>
+      <p>Если у вас возникли вопросы по оплате, покупкам, игровому процессу или техническим проблемам — обратитесь в поддержку проекта NeonWorld любым удобным способом.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:20px 0">
+        <a href="mailto:NeonWorld.gg@list.ru" class="support-card">
+          <div style="font-size:32px">📧</div>
+          <div>
+            <div style="font-weight:800;color:#fff;font-size:15px">Электронная почта</div>
+            <div style="color:var(--accent-2);font-size:13.5px;margin-top:2px;word-break:break-all">NeonWorld.gg@list.ru</div>
+          </div>
+        </a>
+
+        <a href="https://t.me/NeonWorld_support" target="_blank" rel="noopener" class="support-card" style="background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.3)">
+          <div style="font-size:32px">💬</div>
+          <div>
+            <div style="font-weight:800;color:#fff;font-size:15px">Telegram</div>
+            <div style="color:#c084fc;font-size:13.5px;margin-top:2px">@NeonWorld_support</div>
+          </div>
+        </a>
+      </div>
+
+      <h3>🕐 Время работы</h3>
+      <ul>
+        <li>Поддержка работает <b style="color:#fff">ежедневно с 10:00 до 22:00 (МСК)</b>.</li>
+        <li>Средний срок ответа — <b style="color:#fff">до 24 часов</b>.</li>
+        <li>В выходные и праздничные дни время ответа может быть увеличено.</li>
+      </ul>
+
+      <h3>📋 Что указать в обращении</h3>
+      <ul>
+        <li>Ваш игровой никнейм на сервере NeonWorld.</li>
+        <li>Дата и время покупки (если вопрос по оплате).</li>
+        <li>Способ оплаты (карта, СБП, криптовалюта и т.д.).</li>
+        <li>Номер заказа или чек (если есть).</li>
+        <li>Подробное описание проблемы.</li>
+        <li>Скриншот проблемы (если возможно).</li>
+      </ul>
+
+      <h3>💳 Вопросы по оплате</h3>
+      <ul>
+        <li>Если оплата не поступила в течение <b style="color:#fff">30 минут</b> — напишите в поддержку с чеком.</li>
+        <li>Проверьте папку «Спам» — письма от платёжной системы могут попасть туда.</li>
+        <li>Возврат средств за цифровые товары (привилегии, кейсы, риллики) <b style="color:#fff">не производится</b> после активации на сервере — см. раздел «Правила».</li>
+        <li>Если товар не был выдан из-за технической ошибки — мы обязуемся выдать его в течение 24 часов или вернуть средства.</li>
+      </ul>
+
+      <h3>⚖️ Юридическая информация</h3>
+      <ul>
+        <li>Все операции проходят через сертифицированную платёжную систему <b style="color:#fff">Platega.io</b>.</li>
+        <li>Данные банковских карт обрабатываются исключительно на стороне платёжного сервиса — мы их не видим и не храним.</li>
+        <li>Обработка персональных данных осуществляется в соответствии с ФЗ-152 «О персональных данных».</li>
+        <li>Оплата цифровых товаров не является возвратной сделкой — см. пользовательское соглашение.</li>
+      </ul>
+
+      <h3>🚨 Жалобы и спорные ситуации</h3>
+      <p>Если вы столкнулись с мошенничеством, некорректным поведением администрации или спорной ситуацией — напишите на <a href="mailto:NeonWorld.gg@list.ru">NeonWorld.gg@list.ru</a> с темой письма <b style="color:#fff">«Жалоба»</b>. Ваше обращение будет рассмотрено в течение 72 часов.</p>
+
+      <div style="margin-top:24px;padding:16px 20px;border-radius:14px;background:rgba(255,168,82,.08);border:1px solid rgba(255,168,82,.3)">
+        <p style="color:#ffa852;font-weight:800;font-size:14px;margin-bottom:6px">⚠️ Осторожно, мошенники!</p>
+        <p style="color:#c2c2d8;line-height:1.6;font-size:14px;margin:0">
+          Официальные контакты проекта — только те, что указаны на этой странице.
+          Если вам пишут «от лица администрации» с других аккаунтов — не отвечайте и сообщите нам: <a href="mailto:NeonWorld.gg@list.ru">NeonWorld.gg@list.ru</a>.
+        </p>
+      </div>
     </div>
   </div>
 </div>
